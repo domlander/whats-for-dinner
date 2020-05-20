@@ -1,0 +1,18 @@
+.itemList {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  width: 90vw;
+}
+
+.item {
+  height: 45px;
+  list-style: none;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  padding: 4px 8px;
+}
+
+.noIngredients {
+  font: red;
+}
