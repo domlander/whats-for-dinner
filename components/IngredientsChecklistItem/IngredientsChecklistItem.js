@@ -29,6 +29,7 @@ const IngredientsChecklistItem = ({
     } else {
       addIngredient(ingredient);
     }
+    localStorage.setItem("_ingredients", JSON.stringify(checkedIngredients));
   };
 
   return (
