@@ -2,7 +2,7 @@ import React from "react";
 import Head from "next/head";
 
 import Layout from "../../components/Layout";
-import RecipeList from "../../components/RecipeList";
+import RecipeListContainer from "../../containers/RecipeListContainer";
 
 export async function getServerSideProps(context) {
   const ingredients = Object.keys(context.query)[0];
@@ -28,7 +28,7 @@ function byIngredients({ recipes }) {
         <title>What's For Dinner? | Recipes</title>
         <script src="https://developer.edamam.com/attribution/badge.js"></script>
       </Head>
-      <RecipeList recipes={recipes} />
+      <RecipeListContainer recipes={recipes} />
     </Layout>
   );
 }

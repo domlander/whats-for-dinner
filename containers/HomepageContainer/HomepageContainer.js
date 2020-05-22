@@ -3,11 +3,11 @@ import Link from "next/link";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import RestaurantMenuIcon from "@material-ui/icons/RestaurantMenu";
-import IngredientsChecklist from "../IngredientsChecklist";
+import IngredientsChecklist from "../../components/IngredientsChecklist";
 import availableIngredients from "./AvailableIngredients";
-import styles from "./Homepage.module.scss";
+import styles from "./HomepageContainer.module.scss";
 
-function Homepage() {
+function HomepageContainer() {
   const [checkedIngredients, setCheckedIngredients] = useState([]);
 
   useEffect(() => {
@@ -42,4 +42,4 @@ function Homepage() {
   );
 }
 
-export default Homepage;
+export default HomepageContainer;

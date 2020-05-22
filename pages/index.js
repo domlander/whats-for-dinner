@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 
-import Homepage from "../components/Homepage";
+import HomepageContainer from "../containers/HomepageContainer";
 import Layout from "./../components/Layout/Layout";
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-      <Homepage />
+      <HomepageContainer />
     </Layout>
   );
 }

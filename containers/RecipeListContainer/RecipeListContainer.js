@@ -2,10 +2,10 @@ import Link from "next/link";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import RestaurantMenuIcon from "@material-ui/icons/RestaurantMenu";
-import RecipeCard from "../RecipeCard";
-import styles from "./RecipeList.module.scss";
+import RecipeCard from "../../components/RecipeCard";
+import styles from "./RecipeListContainer.module.scss";
 
-const RecipeList = ({ recipes }) => {
+const RecipeListContainer = ({ recipes }) => {
   if (!recipes || !recipes.hits) {
     return <p>No recipes found</p>;
   }
@@ -33,4 +33,4 @@ const RecipeList = ({ recipes }) => {
   );
 };
 
-export default RecipeList;
+export default RecipeListContainer;
