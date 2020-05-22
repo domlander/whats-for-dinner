@@ -1,19 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Link from "next/link";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-
-import styles from "./Homepage.module.scss";
-
-import availableIngredients from "./AvailableIngredients";
-
+import RestaurantMenuIcon from "@material-ui/icons/RestaurantMenu";
 import IngredientsChecklist from "../IngredientsChecklist";
+import availableIngredients from "./AvailableIngredients";
+import styles from "./Homepage.module.scss";
 
 function Homepage() {
   const [checkedIngredients, setCheckedIngredients] = useState([]);
 
+  useEffect(() => {
+    const data = localStorage.getItem("_ingredients");
+    const parsedData = JSON.parse(data);
+    setCheckedIngredients(parsedData);
+  }, []);
+
   return (
     <div className={styles.homepage}>
-      <Typography variant="h3">Ingredients</Typography>
+      <div className={styles.topRow}>
+        <RestaurantMenuIcon style={{ fontSize: 60 }} color="secondary" />
+        <span className={styles.heading}>
+          <Typography variant="h2">Ingredients</Typography>
+        </span>
+      </div>
       <div className={styles.checklist}>
         <IngredientsChecklist
           ingredients={availableIngredients}
@@ -22,9 +32,11 @@ function Homepage() {
         />
       </div>
       <div className={styles.search}>
-        <Button variant="contained" href="/search/by-ingredients">
-          Search recipes
-        </Button>
+        <Link href={`/search/by-ingredients?${checkedIngredients}`}>
+          <Button disabled={!checkedIngredients.length} variant="contained">
+            Search recipes
+          </Button>
+        </Link>
       </div>
     </div>
   );

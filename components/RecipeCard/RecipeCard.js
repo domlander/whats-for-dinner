@@ -14,14 +14,15 @@ const RecipeCard = ({
   },
 }) => (
   <Grid item xs={12} sm={6} md={4} lg={3}>
-    <h2>{label}</h2>
-    <img src={image} alt="delicious meal" />
-    <div className={styles.fullRecipe}>
-      <Button variant="contained" href={url} target="_blank">
-        Full recipe
-      </Button>
-    </div>
-    <div className={styles.ingredients}>
+    <a href={url} target="_blank">
+      <img
+        className={styles.mealImage}
+        src={image}
+        alt="delicious meal"
+        title={label}
+      />
+    </a>
+    <div className={styles.ingredientsList}>
       <h4>Ingredients</h4>
       <ul>
         {/* We don't want to display duplicate ingredients */}
@@ -30,10 +31,15 @@ const RecipeCard = ({
         ))}
       </ul>
     </div>
-    {totalTime > 0 && <p>{`${totalTime} minutes`}</p>}
+    {totalTime > 0 && <p>{`Prep and cook time: ${totalTime} minutes`}</p>}
     <p>
       Calories per serving: {Math.round(calories / serves).toLocaleString()}
     </p>
+    <div className={styles.fullRecipe}>
+      <Button variant="contained" href={url} target="_blank">
+        Full recipe
+      </Button>
+    </div>
   </Grid>
 );
 

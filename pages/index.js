@@ -9,6 +9,7 @@ export default function Home() {
     <Layout>
       <Head>
         <title>What's For Dinner?</title>
+        {/* MaterialUI recommends the Roboto font */}
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"

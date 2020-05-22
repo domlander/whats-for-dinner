@@ -1,18 +1,10 @@
 const ingredients = [
-  "bacon",
-  "broccoli",
-  "brown sugar",
-  "cauliflower",
-  "cheddar cheese",
-];
-
-const ingredientsFull = [
   "Bacon",
   "Broccoli",
   "Brown sugar",
   "Cauliflower",
   "Cheddar cheese",
-  "Chicken breast",
+  "Chicken",
   "Eggs",
   "Fish",
   "Garlic",
@@ -27,4 +19,4 @@ const ingredientsFull = [
   "Tomatoes",
 ];
 
-export default ingredientsFull;
+export default ingredients;

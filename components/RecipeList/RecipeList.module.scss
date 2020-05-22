@@ -1,0 +1,12 @@
+$approximate-icon-width: 60px;
+
+.topRow {
+  display: flex;
+  align-items: center;
+  width: calc(100% - #{$approximate-icon-width});
+  margin: 40px $approximate-icon-width 40px 0;
+}
+
+.heading {
+  margin: auto;
+}

@@ -4,10 +4,12 @@ import Head from "next/head";
 import Layout from "../../components/Layout";
 import RecipeList from "../../components/RecipeList";
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
+  const ingredients = Object.keys(context.query)[0];
+
   const apiUrl =
     "https://api.edamam.com/search" +
-    "?q={chicken}" +
+    `?q=${ingredients || "chicken"}` +
     `&app_id=${process.env.APPLICATION_ID}` +
     `&app_key=${process.env.APPLICATION_KEY}` +
     "&from=0" +
@@ -24,6 +26,7 @@ function byIngredients({ recipes }) {
     <Layout>
       <Head>
         <title>What's For Dinner? | Recipes</title>
+        <script src="https://developer.edamam.com/attribution/badge.js"></script>
       </Head>
       <RecipeList recipes={recipes} />
     </Layout>
