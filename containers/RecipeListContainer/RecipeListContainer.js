@@ -4,11 +4,10 @@ import Typography from "@material-ui/core/Typography";
 import RestaurantMenuIcon from "@material-ui/icons/RestaurantMenu";
 import RecipeCard from "../../components/RecipeCard";
 import styles from "./RecipeListContainer.module.scss";
+import { Button } from "@material-ui/core";
 
 const RecipeListContainer = ({ recipes }) => {
-  if (!recipes || !recipes.hits) {
-    return <p>No recipes found</p>;
-  }
+  console.log("recipes", recipes);
 
   return (
     <div className="recipeList">
@@ -22,13 +21,36 @@ const RecipeListContainer = ({ recipes }) => {
           <Typography variant="h2">Recipes</Typography>
         </span>
       </div>
-      <Grid container spacing={3}>
-        {recipes.hits.map((x) => {
-          const recipeId = x.recipe.uri.split("#")[1];
-          return <RecipeCard recipe={x.recipe} key={recipeId} />;
-        })}
-      </Grid>
-      <div id="edamam-badge" data-color="white"></div>
+      {!recipes || recipes.status === "error" ? (
+        <p>
+          We are unable to show you recipes at the moment. Try again in a few
+          minutes.
+          <Button
+            onClick={() => {
+              window.location.reload(false);
+            }}
+          >
+            Refresh page
+          </Button>
+        </p>
+      ) : !recipes.hits.length ? (
+        <p>
+          No recipes found!{" "}
+          <Link href="/">
+            <a>Try removing some ingredients</a>
+          </Link>
+        </p>
+      ) : (
+        <>
+          <Grid container spacing={3}>
+            {recipes.hits.map((x) => {
+              const recipeId = x.recipe.uri.split("#")[1];
+              return <RecipeCard recipe={x.recipe} key={recipeId} />;
+            })}
+          </Grid>
+          <div id="edamam-badge" data-color="white"></div>
+        </>
+      )}
     </div>
   );
 };
