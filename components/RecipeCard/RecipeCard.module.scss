@@ -1,10 +1,33 @@
-.fullRecipe {
-  margin-top: 20px;
+.recipeCard {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
 }
+
 .mealImage {
   width: 100%;
 }
 
-.recipeCard {
-  margin-bottom: 30px;
+.ingredientsListHeading {
+  margin-top: 20px;
+}
+
+.info {
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.extraInfo {
+  margin-top: auto;
+}
+
+.fullRecipeBtn {
+  margin: 20px 0 40px;
+}
+
+.timeCopy,
+.caloriesCopy {
+  font-weight: 600;
 }

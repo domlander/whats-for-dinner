@@ -5,11 +5,11 @@ import Layout from "../../components/Layout";
 import RecipeListContainer from "../../containers/RecipeListContainer";
 
 export async function getServerSideProps(context) {
-  const ingredients = Object.keys(context.query)[0];
+  const ingredients = Object.keys(context.query)[0] || "chicken";
 
   const apiUrl =
     "https://api.edamam.com/search" +
-    `?q=${ingredients || "chicken"}` +
+    `?q=${ingredients}` +
     `&app_id=${process.env.APPLICATION_ID}` +
     `&app_key=${process.env.APPLICATION_KEY}` +
     "&from=0" +
@@ -18,17 +18,17 @@ export async function getServerSideProps(context) {
   const res = await fetch(apiUrl);
   const recipes = await res.json();
 
-  return { props: { recipes } };
+  return { props: { recipes, ingredients } };
 }
 
-function byIngredients({ recipes }) {
+function byIngredients({ recipes, ingredients }) {
   return (
     <Layout>
       <Head>
         <title>What's For Dinner? | Recipes</title>
         <script src="https://developer.edamam.com/attribution/badge.js"></script>
       </Head>
-      <RecipeListContainer recipes={recipes} />
+      <RecipeListContainer recipes={recipes} ingredients={ingredients} />
     </Layout>
   );
 }

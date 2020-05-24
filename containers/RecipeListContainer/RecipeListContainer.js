@@ -6,11 +6,9 @@ import RecipeCard from "../../components/RecipeCard";
 import styles from "./RecipeListContainer.module.scss";
 import { Button } from "@material-ui/core";
 
-const RecipeListContainer = ({ recipes }) => {
-  console.log("recipes", recipes);
-
+const RecipeListContainer = ({ recipes, ingredients }) => {
   return (
-    <div className="recipeList">
+    <div className={styles.recipeList}>
       <div className={styles.topRow}>
         <Link href="/">
           <a>
@@ -18,7 +16,13 @@ const RecipeListContainer = ({ recipes }) => {
           </a>
         </Link>
         <span className={styles.heading}>
-          <Typography variant="h2">Recipes</Typography>
+          <Typography variant="h3">
+            Recipes featuring{" "}
+            {ingredients
+              .toLowerCase()
+              .replace(/,/g, ", ")
+              .replace(/,([^,]*)$/, " and$1")}
+          </Typography>
         </span>
       </div>
       {!recipes || recipes.status === "error" ? (
@@ -42,7 +46,7 @@ const RecipeListContainer = ({ recipes }) => {
         </p>
       ) : (
         <>
-          <Grid container spacing={3}>
+          <Grid container>
             {recipes.hits.map((x) => {
               const recipeId = x.recipe.uri.split("#")[1];
               return <RecipeCard recipe={x.recipe} key={recipeId} />;
