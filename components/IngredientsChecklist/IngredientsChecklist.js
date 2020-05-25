@@ -5,32 +5,21 @@ import Grid from "@material-ui/core/Grid";
 
 import styles from "./IngredientsChecklist.module.scss";
 import Checkbox from "../Checkbox";
+import * as utils from "../../utils";
 
 const IngredientsChecklist = ({
   ingredients,
   checkedIngredients,
   setCheckedIngredients,
 }) => {
-  const addIngredient = (ingredient) => {
-    checkedIngredients.push(ingredient);
-    setCheckedIngredients([...checkedIngredients]);
-  };
-
-  const removeIngredient = (ingredient) => {
-    var index = checkedIngredients.indexOf(ingredient);
-    if (index !== -1) {
-      checkedIngredients.splice(index, 1);
-      setCheckedIngredients([...checkedIngredients]);
-    }
-  };
-
   const handleCheckboxClick = useCallback((element) => {
     const ingredient = element.name;
     if (checkedIngredients.includes(ingredient)) {
-      removeIngredient(ingredient);
+      utils.removeElementFromArray(checkedIngredients, ingredient);
     } else {
-      addIngredient(ingredient);
+      checkedIngredients.push(ingredient);
     }
+    setCheckedIngredients([...checkedIngredients]);
     localStorage.setItem("_ingredients", JSON.stringify(checkedIngredients));
   }, []);
 
