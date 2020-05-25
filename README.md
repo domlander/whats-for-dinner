@@ -1,18 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/zeit/next.js/tree/canary/packages/create-next-app).
+## What's for dinner?
 
-## Getting Started
+What's for dinner? is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/zeit/next.js/tree/canary/packages/create-next-app) using [SASS](https://sass-lang.com/), [CSS Modules](https://github.com/css-modules/css-modules) and [Material-UI](https://material-ui.com/), which allows you to search for recipes given a list of ingredients. Gets data from a free-to-use public API.
 
-First, run the development server:
+For example, If you've bought a whole chicken and you want to use up the garlic and the mushrooms you have in your cupboard, this website will help you find recipes that feature all these ingredients.
+
+## Running the application locally
+
+First, clone or download the solution.
+
+To be able to see results when running the application, you will need to sign up to a free account from [Edamam](https://developer.edamam.com/edamam-recipe-api). Fill in the form for the free developer tier, head to the [applications page](https://developer.edamam.com/admin/applications) and click "view" to see your Application ID and Application key which you will need for the next step.
+
+Create a file in the root directory called `.env` and add the following to the file:
+
+```
+APPLICATION_ID="{YOUR_APPLICATION_ID}"
+APPLICATION_KEY="{YOUR_APPLICATION_KEY}"
+```
+
+Then, run the development server:
 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
 ## Learn More
 
@@ -20,8 +31,6 @@ To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/zeit/next.js/) - your feedback and contributions are welcome!
 
 ## Deploy on Vercel
 
