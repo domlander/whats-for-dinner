@@ -35,7 +35,7 @@ const IngredientsChecklist = ({
                   <Checkbox
                     key={ingredient}
                     value={ingredient}
-                    checked={isChecked}
+                    isChecked={isChecked}
                     handleClick={handleCheckboxClick}
                   />
                 ),
