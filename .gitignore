@@ -17,6 +17,7 @@
 
 # misc
 .DS_Store
+example-api-data.json
 
 # debug
 npm-debug.log*
