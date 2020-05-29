@@ -13,7 +13,10 @@ function HomepageContainer() {
   useEffect(() => {
     const data = localStorage.getItem("_ingredients");
     const parsedData = JSON.parse(data);
-    setCheckedIngredients(parsedData);
+    // On first load, parsedData is "null" as there's no localstorage item, this then causes checkedIngredients to be null, upon which you check length later.
+    if (parsedData) {
+      setCheckedIngredients(parsedData);
+    }
   }, []);
 
   return (

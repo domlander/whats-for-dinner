@@ -12,16 +12,20 @@ const IngredientsChecklist = ({
   checkedIngredients,
   setCheckedIngredients,
 }) => {
-  const handleCheckboxClick = useCallback((element) => {
-    const ingredient = element.name;
-    if (checkedIngredients.includes(ingredient)) {
-      utils.removeElementFromArray(checkedIngredients, ingredient);
-    } else {
-      checkedIngredients.push(ingredient);
-    }
-    setCheckedIngredients([...checkedIngredients]);
-    localStorage.setItem("_ingredients", JSON.stringify(checkedIngredients));
-  }, []);
+  const handleCheckboxClick = useCallback(
+    (element) => {
+      const ingredient = element.name;
+      if (checkedIngredients.includes(ingredient)) {
+        utils.removeElementFromArray(checkedIngredients, ingredient);
+      } else {
+        checkedIngredients.push(ingredient);
+      }
+      setCheckedIngredients([...checkedIngredients]);
+      localStorage.setItem("_ingredients", JSON.stringify(checkedIngredients));
+    },
+    // Add checkedIngredients to the dependency list, otherwise when you refresh, it uses the initial state (0 items), and doesn't accordingly calculate based on what's been put in from local storage.
+    [checkedIngredients]
+  );
 
   return (
     <form>
@@ -35,7 +39,7 @@ const IngredientsChecklist = ({
                   <Checkbox
                     key={ingredient}
                     value={ingredient}
-                    checked={isChecked}
+                    isChecked={isChecked}
                     handleClick={handleCheckboxClick}
                   />
                 ),
