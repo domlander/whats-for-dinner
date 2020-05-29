@@ -35,7 +35,7 @@ function HomepageContainer() {
         />
       </div>
       <div className={styles.search}>
-        <Link href={`/search/by-ingredients?${checkedIngredients}`}>
+        <Link href={`/search?ingredients=${checkedIngredients}&page=1`}>
           <Button disabled={!checkedIngredients.length} variant="contained">
             Search recipes
           </Button>
