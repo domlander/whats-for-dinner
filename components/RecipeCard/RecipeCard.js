@@ -47,9 +47,8 @@ const RecipeCard = ({
       <List>
         {/* We don't want to display duplicate ingredients */}
         {[...new Set(ingredientLines)].slice(0, 6).map((ingredient, i) => (
-          <ListItem>
+          <ListItem key={ingredient}>
             <ListItemText
-              key={ingredient}
               className={styles.listItem}
               primary={
                 i === 5

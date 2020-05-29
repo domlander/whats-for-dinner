@@ -2,7 +2,7 @@ import React from "react";
 import Head from "next/head";
 
 import HomepageContainer from "../containers/HomepageContainer";
-import Layout from "./../components/Layout/Layout";
+import Layout from "../components/Layout/Layout";
 
 export default function Home() {
   return (

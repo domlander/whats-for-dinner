@@ -1,24 +1,29 @@
 import React from "react";
 import Head from "next/head";
 
-import Layout from "../../components/Layout";
-import RecipeListContainer from "../../containers/RecipeListContainer";
+import RecipeListContainer from "../containers/RecipeListContainer";
+import Layout from "../components/Layout";
+
+const numRecipesPerPage = 8;
 
 export async function getServerSideProps(context) {
-  const ingredients = Object.keys(context.query)[0] || "chicken";
+  let { ingredients, page } = context.query;
+
+  ingredients = ingredients || "chicken";
+  page = parseInt(page) || 1;
 
   const apiUrl =
     "https://api.edamam.com/search" +
     `?q=${ingredients}` +
     `&app_id=${process.env.APPLICATION_ID}` +
     `&app_key=${process.env.APPLICATION_KEY}` +
-    "&from=0" +
-    "&to=20";
+    `&from=${(page - 1) * numRecipesPerPage}` +
+    `&to=${(page - 1) * numRecipesPerPage + numRecipesPerPage}`;
 
   const res = await fetch(apiUrl);
   const recipes = await res.json();
 
-  return { props: { recipes, ingredients } };
+  return { props: { recipes, ingredients, page } };
 }
 
 function byIngredients({ recipes, ingredients }) {
@@ -28,7 +33,11 @@ function byIngredients({ recipes, ingredients }) {
         <title>What's For Dinner? | Recipes</title>
         <script src="https://developer.edamam.com/attribution/badge.js"></script>
       </Head>
-      <RecipeListContainer recipes={recipes} ingredients={ingredients} />
+      <RecipeListContainer
+        recipes={recipes}
+        ingredients={ingredients}
+        numRecipesPerPage={numRecipesPerPage}
+      />
     </Layout>
   );
 }
