@@ -1,6 +1,12 @@
 import MuiPagination from "@material-ui/lab/Pagination";
+import { FunctionComponent } from "react";
 
-const Pagination = ({ count, handleClick }) => {
+interface Props {
+  readonly count: number;
+  readonly handleClick: (value: number) => void;
+}
+
+const Pagination: FunctionComponent<Props> = ({ count, handleClick }) => {
   return (
     <MuiPagination
       color="secondary"

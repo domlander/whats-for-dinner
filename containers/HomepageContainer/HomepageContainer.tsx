@@ -4,16 +4,15 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import RestaurantMenuIcon from "@material-ui/icons/RestaurantMenu";
 import IngredientsChecklist from "../../components/IngredientsChecklist";
-import availableIngredients from "./AvailableIngredients";
+import availableIngredients from "../../interfaces/AvailableIngredients";
 import styles from "./HomepageContainer.module.scss";
 
-function HomepageContainer() {
-  const [checkedIngredients, setCheckedIngredients] = useState([]);
+const HomepageContainer = () => {
+  const [checkedIngredients, setCheckedIngredients] = useState<Array<string>>([]);
 
   useEffect(() => {
-    const data = localStorage.getItem("_ingredients");
-    const parsedData = JSON.parse(data);
-    // On first load, parsedData is "null" as there's no localstorage item, this then causes checkedIngredients to be null, upon which you check length later.
+    const data: string | null = localStorage.getItem("_ingredients");
+    const parsedData: string[] = data && JSON.parse(data);
     if (parsedData) {
       setCheckedIngredients(parsedData);
     }
@@ -43,6 +42,6 @@ function HomepageContainer() {
       </div>
     </div>
   );
-}
+};
 
 export default HomepageContainer;

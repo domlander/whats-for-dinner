@@ -1,4 +1,4 @@
-import { useMemo, useCallback } from "react";
+import { useMemo, useCallback, ChangeEvent, Dispatch, SetStateAction } from "react";
 
 import FormGroup from "@material-ui/core/FormGroup";
 import Grid from "@material-ui/core/Grid";
@@ -7,14 +7,20 @@ import styles from "./IngredientsChecklist.module.scss";
 import Checkbox from "../Checkbox";
 import * as utils from "../../utils";
 
-const IngredientsChecklist = ({
+interface Props {
+  ingredients: ReadonlyArray<string>;
+  readonly checkedIngredients: string[];
+  readonly setCheckedIngredients: Dispatch<SetStateAction<string[]>>;
+}
+
+const IngredientsChecklist: React.FunctionComponent<Props> = ({
   ingredients,
   checkedIngredients,
   setCheckedIngredients,
 }) => {
   const handleCheckboxClick = useCallback(
-    (element) => {
-      const ingredient = element.name;
+    (element: ChangeEvent<HTMLInputElement>) => {
+      const ingredient: string = element.target.name;
       if (checkedIngredients.includes(ingredient)) {
         utils.removeElementFromArray(checkedIngredients, ingredient);
       } else {
@@ -23,7 +29,6 @@ const IngredientsChecklist = ({
       setCheckedIngredients([...checkedIngredients]);
       localStorage.setItem("_ingredients", JSON.stringify(checkedIngredients));
     },
-    // Add checkedIngredients to the dependency list, otherwise when you refresh, it uses the initial state (0 items), and doesn't accordingly calculate based on what's been put in from local storage.
     [checkedIngredients]
   );
 
@@ -32,8 +37,8 @@ const IngredientsChecklist = ({
       {ingredients ? (
         <FormGroup className={styles.itemList}>
           <Grid container>
-            {ingredients.map((ingredient) => {
-              const isChecked = checkedIngredients.includes(ingredient);
+            {ingredients.map((ingredient: string) => {
+              const isChecked: boolean = checkedIngredients.includes(ingredient);
               return useMemo(
                 () => (
                   <Checkbox
@@ -49,10 +54,10 @@ const IngredientsChecklist = ({
           </Grid>
         </FormGroup>
       ) : (
-        <p className={styles.noIngredients}>
-          "No ingredients found! Please try again later."
-        </p>
-      )}
+          <p className={styles.noIngredients}>
+            "No ingredients found! Please try again later."
+          </p>
+        )}
     </form>
   );
 };

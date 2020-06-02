@@ -1,3 +1,4 @@
+import { FunctionComponent } from "react";
 import Link from "next/link";
 import Typography from "@material-ui/core/Typography";
 import RestaurantMenuIcon from "@material-ui/icons/RestaurantMenu";
@@ -5,7 +6,11 @@ import * as utils from "../../utils";
 
 import styles from "./RecipeListHeader.module.scss";
 
-const RecipeListHeader = ({ ingredients }) => (
+interface Props {
+  readonly ingredients: string;
+}
+
+const RecipeListHeader: FunctionComponent<Props> = ({ ingredients }) => (
   <div className={styles.topRow}>
     <Link href="/">
       <a>
