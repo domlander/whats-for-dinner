@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { FunctionComponent } from "react";
 
-const NoRecipesFound = () => (
+const NoRecipesFound: FunctionComponent = () => (
   <p>
     No recipes found!{" "}
     <Link href="/">
