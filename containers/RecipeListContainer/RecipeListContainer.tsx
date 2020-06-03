@@ -21,7 +21,7 @@ const RecipeListContainer: FunctionComponent<Props> = ({
   const router: NextRouter = useRouter();
   const handlePaginationClick = (value: number): Promise<void> =>
     router
-      .push(`/search?ingredients=${ingredients}&page=${value}`)
+      .push(`/recipes?ingredients=${ingredients}&page=${value}`)
       .then(() => window.scrollTo(0, 0));
 
   if (!process.env.NEXT_PUBLIC_NUM_RESULTS_ALLOWED_BY_API) {
