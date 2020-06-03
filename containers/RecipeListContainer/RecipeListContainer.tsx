@@ -19,7 +19,7 @@ const RecipeListContainer: FunctionComponent<Props> = ({
   numRecipesPerPage,
 }) => {
   const router: NextRouter = useRouter();
-  const handlePaginationClick = (value: string) =>
+  const handlePaginationClick = (value: number): Promise<void> =>
     router
       .push(`/search?ingredients=${ingredients}&page=${value}`)
       .then(() => window.scrollTo(0, 0));

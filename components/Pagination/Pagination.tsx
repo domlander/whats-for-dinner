@@ -3,7 +3,7 @@ import { FunctionComponent } from "react";
 
 interface Props {
   readonly count: number;
-  readonly handleClick: (value: number) => void;
+  readonly handleClick: (value: number) => Promise<void>;
 }
 
 const Pagination: FunctionComponent<Props> = ({ count, handleClick }) => {

@@ -8,7 +8,7 @@ import Checkbox from "../Checkbox";
 import * as utils from "../../utils";
 
 interface Props {
-  ingredients: ReadonlyArray<string>;
+  readonly ingredients: ReadonlyArray<string>;
   readonly checkedIngredients: string[];
   readonly setCheckedIngredients: Dispatch<SetStateAction<string[]>>;
 }
