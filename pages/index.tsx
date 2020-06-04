@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from "react";
 import Head from "next/head";
 
-import HomepageContainer from "../containers/HomepageContainer";
-import Layout from "../components/Layout/Layout";
+import HomepageContainer from "../src/containers/HomepageContainer";
+import Layout from "../src/components/Layout/Layout";
 
 const Home: FunctionComponent = () => (
   <Layout>

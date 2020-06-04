@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import Head from "next/head";
-import RecipeListContainer from "../containers/RecipeListContainer";
-import Layout from "../components/Layout";
+import RecipeListContainer from "../src/containers/RecipeListContainer";
+import Layout from "../src/components/Layout";
 import { GetServerSideProps } from "next";
 
 const numRecipesPerPage = 8;
