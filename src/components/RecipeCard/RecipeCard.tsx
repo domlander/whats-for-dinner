@@ -69,17 +69,27 @@ const RecipeCard: FunctionComponent<Props> = ({
         </List>
         <div className={styles.extraInfo}>
           {totalTime > 0 && (
-            <dl className={styles.time}>
-              <dt className={styles.timeCopy}>Prep and cook time: </dt>
-              <dd className={styles.timeValue}>{`${totalTime} minutes`}</dd>
+            <dl className={styles.dl}>
+              <dt className={styles.dt}>Prep and cook time: </dt>
+              <dd className={styles.dd}>{`${totalTime} minutes`}</dd>
             </dl>
           )}
-          <div className={styles.calories}>
-            <dt className={styles.caloriesCopy}>Calories per serving: </dt>
-            <dd className={styles.caloriesValue}>
-              {Math.round(calories / serves).toLocaleString()}
-            </dd>
-          </div>
+          {calories > 0 && serves > 0 && (
+            <dl className={styles.dl}>
+              <dt className={styles.dt}>Calories per serving: </dt>
+              <dd className={styles.dd}>
+                {Math.round(calories / serves).toLocaleString()}
+              </dd>
+            </dl>
+          )}
+          {serves > 0 && (
+            <dl className={styles.dl}>
+              <dt className={styles.dt}>Serves: </dt>
+              <dd className={styles.dd}>
+                {serves}
+              </dd>
+            </dl>
+          )}
           <div className={styles.fullRecipeBtn}>
             <Button variant="contained" href={url} target="_blank">
               Full recipe

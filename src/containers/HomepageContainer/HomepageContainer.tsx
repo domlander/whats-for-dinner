@@ -19,7 +19,7 @@ const HomepageContainer = () => {
   }, []);
 
   return (
-    <div className={styles.homepage}>
+    <div className={styles.homepageContainer}>
       <div className={styles.topRow}>
         <RestaurantMenuIcon style={{ fontSize: 60 }} color="secondary" />
         <span className={styles.heading}>
@@ -34,7 +34,7 @@ const HomepageContainer = () => {
         />
       </div>
       <div className={styles.search}>
-        <Link href={`/search?ingredients=${checkedIngredients}&page=1`}>
+        <Link href={`/recipes?ingredients=${checkedIngredients}&page=1`}>
           <Button disabled={!checkedIngredients.length} variant="contained">
             Search recipes
           </Button>

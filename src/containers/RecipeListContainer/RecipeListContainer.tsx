@@ -19,9 +19,9 @@ const RecipeListContainer: FunctionComponent<Props> = ({
   numRecipesPerPage,
 }) => {
   const router: NextRouter = useRouter();
-  const handlePaginationClick = (value: string) =>
+  const handlePaginationClick = (value: number): Promise<void> =>
     router
-      .push(`/search?ingredients=${ingredients}&page=${value}`)
+      .push(`/recipes?ingredients=${ingredients}&page=${value}`)
       .then(() => window.scrollTo(0, 0));
 
   if (!process.env.NEXT_PUBLIC_NUM_RESULTS_ALLOWED_BY_API) {
@@ -40,16 +40,16 @@ const RecipeListContainer: FunctionComponent<Props> = ({
 
   return (
     <>
-      <RecipeListHeader ingredients={ingredients} />
       {!recipes?.hits || recipes.status === "error" ? (
         <ApiError />
       ) : (
-          <div>
+          <>
+            <RecipeListHeader ingredients={ingredients} />
             <RecipeList recipes={recipes} />
             <div className={styles.pagination}>
               <Pagination count={numPages} handleClick={handlePaginationClick} />
             </div>
-          </div>
+          </>
         )}
     </>
   );

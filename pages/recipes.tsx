@@ -1,29 +1,29 @@
 import React, { FunctionComponent } from "react";
 import Head from "next/head";
-import RecipeListContainer from "../containers/RecipeListContainer";
-import Layout from "../components/Layout";
+import RecipeListContainer from "../src/containers/RecipeListContainer";
+import Layout from "../src/components/Layout";
 import { GetServerSideProps } from "next";
 
 const numRecipesPerPage = 8;
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  let { ingredientsFromQuery, pageFromQuery } = query;
+  let { ingredients, page } = query;
 
-  let ingredients: string = ingredientsFromQuery?.toString() || "chicken";
-  let page: number = typeof pageFromQuery === 'string' && parseInt(pageFromQuery) || 1;
+  let myIngredients: string = ingredients?.toString() || "chicken";
+  let thisPage: number = typeof page === 'string' && parseInt(page) || 1;
 
   const apiUrl: string =
     "https://api.edamam.com/search" +
-    `?q=${ingredients}` +
+    `?q=${myIngredients}` +
     `&app_id=${process.env.APPLICATION_ID}` +
     `&app_key=${process.env.APPLICATION_KEY}` +
-    `&from=${(page - 1) * numRecipesPerPage}` +
-    `&to=${(page - 1) * numRecipesPerPage + numRecipesPerPage}`;
+    `&from=${(thisPage - 1) * numRecipesPerPage}` +
+    `&to=${(thisPage - 1) * numRecipesPerPage + numRecipesPerPage}`;
 
   const res = await fetch(apiUrl);
   const recipes = await res.json();
 
-  return { props: { recipes, ingredients, page } };
+  return { props: { recipes, ingredients: myIngredients, page } };
 }
 
 interface Props {

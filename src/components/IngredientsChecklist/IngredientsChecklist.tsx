@@ -1,4 +1,4 @@
-import { useMemo, useCallback, ChangeEvent, Dispatch, SetStateAction } from "react";
+import { useCallback, ChangeEvent, Dispatch, SetStateAction } from "react";
 
 import FormGroup from "@material-ui/core/FormGroup";
 import Grid from "@material-ui/core/Grid";
@@ -8,7 +8,7 @@ import Checkbox from "../Checkbox";
 import * as utils from "../../utils";
 
 interface Props {
-  ingredients: ReadonlyArray<string>;
+  readonly ingredients: ReadonlyArray<string>;
   readonly checkedIngredients: string[];
   readonly setCheckedIngredients: Dispatch<SetStateAction<string[]>>;
 }
@@ -39,16 +39,13 @@ const IngredientsChecklist: React.FunctionComponent<Props> = ({
           <Grid container>
             {ingredients.map((ingredient: string) => {
               const isChecked: boolean = checkedIngredients.includes(ingredient);
-              return useMemo(
-                () => (
-                  <Checkbox
-                    key={ingredient}
-                    value={ingredient}
-                    isChecked={isChecked}
-                    handleClick={handleCheckboxClick}
-                  />
-                ),
-                [ingredient, isChecked]
+              return (
+                <Checkbox
+                  key={ingredient}
+                  value={ingredient}
+                  isChecked={isChecked}
+                  handleClick={handleCheckboxClick}
+                />
               );
             })}
           </Grid>

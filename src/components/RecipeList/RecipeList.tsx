@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
-import RecipeCard from "../../components/RecipeCard";
-import NoRecipesFound from "../../components/NoRecipesFound";
+import RecipeCard from "../RecipeCard";
+import NoRecipesFound from "../NoRecipesFound";
 import { Recipe } from "../../interfaces/Recipe";
 import Grid from "@material-ui/core/Grid";
 
