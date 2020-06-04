@@ -40,16 +40,16 @@ const RecipeListContainer: FunctionComponent<Props> = ({
 
   return (
     <>
-      <RecipeListHeader ingredients={ingredients} />
       {!recipes?.hits || recipes.status === "error" ? (
         <ApiError />
       ) : (
-          <div>
+          <>
+            <RecipeListHeader ingredients={ingredients} />
             <RecipeList recipes={recipes} />
             <div className={styles.pagination}>
               <Pagination count={numPages} handleClick={handlePaginationClick} />
             </div>
-          </div>
+          </>
         )}
     </>
   );

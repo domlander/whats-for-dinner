@@ -19,7 +19,7 @@ const HomepageContainer = () => {
   }, []);
 
   return (
-    <div className={styles.homepage}>
+    <div className={styles.homepageContainer}>
       <div className={styles.topRow}>
         <RestaurantMenuIcon style={{ fontSize: 60 }} color="secondary" />
         <span className={styles.heading}>
