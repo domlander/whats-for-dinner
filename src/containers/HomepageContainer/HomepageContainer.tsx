@@ -23,7 +23,7 @@ const HomepageContainer = () => {
   return (
     <div className={styles.homepageContainer}>
       <Header heading='Ingredients' />
-      <Typography variant="subtitle1">Select ingredients you want to use to find a yummy recipe</Typography>
+      <Typography variant="subtitle1">Select ingredients to find a yummy recipe</Typography>
       <div className={styles.checklist}>
         <IngredientsChecklist
           ingredients={availableIngredients}
