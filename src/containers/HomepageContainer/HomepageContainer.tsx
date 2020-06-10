@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import RestaurantMenuIcon from "@material-ui/icons/RestaurantMenu";
+
+import Header from "../../components/Header";
 import IngredientsChecklist from "../../components/IngredientsChecklist";
 import availableIngredients from "../../interfaces/AvailableIngredients";
+
 import styles from "./HomepageContainer.module.scss";
 
 const HomepageContainer = () => {
@@ -20,12 +22,8 @@ const HomepageContainer = () => {
 
   return (
     <div className={styles.homepageContainer}>
-      <div className={styles.topRow}>
-        <RestaurantMenuIcon style={{ fontSize: 60 }} color="secondary" />
-        <span className={styles.heading}>
-          <Typography variant="h2">Ingredients</Typography>
-        </span>
-      </div>
+      <Header heading='Ingredients' />
+      <Typography variant="subtitle1">Select ingredients you want to use to find a yummy recipe</Typography>
       <div className={styles.checklist}>
         <IngredientsChecklist
           ingredients={availableIngredients}

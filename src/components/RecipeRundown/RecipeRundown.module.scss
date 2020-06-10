@@ -1,0 +1,35 @@
+@import "../../styles/variables";
+
+$image-height: 200px;
+
+.rundown {
+  align-items: center;
+  background-color: #ddd;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+  margin-top: $image-height / 2;
+  max-width: 768px;
+  padding: 0 16px;
+  width: 98%;
+}
+
+.image {
+  border-radius: 50%;
+  height: $image-height;
+  width: $image-height;
+  margin-top: -($image-height / 2);
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 10px;
+  @media (min-width: #{$sm}) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.externalRecipe {
+  margin-top: 16px;
+}

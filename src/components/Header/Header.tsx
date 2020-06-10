@@ -2,15 +2,14 @@ import { FunctionComponent } from "react";
 import Link from "next/link";
 import Typography from "@material-ui/core/Typography";
 import RestaurantMenuIcon from "@material-ui/icons/RestaurantMenu";
-import * as utils from "../../utils";
 
-import styles from "./RecipeListHeader.module.scss";
+import styles from "./Header.module.scss";
 
 interface Props {
-  readonly ingredients: string;
+  readonly heading: string;
 }
 
-const RecipeListHeader: FunctionComponent<Props> = ({ ingredients }) => (
+const Header: FunctionComponent<Props> = ({ heading }) => (
   <div className={styles.topRow}>
     <Link href="/">
       <a>
@@ -19,11 +18,10 @@ const RecipeListHeader: FunctionComponent<Props> = ({ ingredients }) => (
     </Link>
     <span className={styles.headingContainer}>
       <Typography className={styles.heading} variant="h3">
-        Recipes featuring{" "}
-        {utils.formatWordsIntoHumanReadableList(ingredients, ",")}
+        {heading}
       </Typography>
     </span>
   </div>
 );
 
-export default RecipeListHeader;
+export default Header;

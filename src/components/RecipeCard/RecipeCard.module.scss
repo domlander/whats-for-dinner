@@ -1,32 +1,40 @@
-.recipeCard {
-  margin-bottom: 30px;
-  display: flex;
-  flex-direction: column;
-}
-
-.mealImage {
+.cardImage {
   width: 100%;
 }
 
-.ingredientsListHeading {
-  margin-top: 20px;
-}
-
-.info {
-  margin: 5px;
+.gridItem {
+  height: 100%;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
 }
 
-.extraInfo {
-  margin-top: auto;
+.cardContent {
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 5px 15px 5px 5px;
+  margin-bottom: 30px;
 }
 
-.fullRecipeBtn {
-  margin: 20px 0 40px;
+.label {
+  max-height: 72px;
+  overflow: hidden;
 }
 
 .dt {
   font-weight: 600;
+}
+
+.buttons {
+  flex: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.externalUrl {
+  padding-left: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
