@@ -1,15 +1,14 @@
+import Link from "next/link";
 import LazyLoad from "react-lazyload";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
 
 import * as utils from "../../utils";
-import styles from "./RecipeCard.module.scss";
 import { FunctionComponent } from "react";
 import { Recipe } from "../../interfaces/Recipe";
+import styles from "./RecipeCard.module.scss";
+import ExternalUrl from "../ExternalUrl";
 
 interface Props {
   readonly recipe: Recipe;
@@ -17,83 +16,74 @@ interface Props {
 
 const RecipeCard: FunctionComponent<Props> = ({
   recipe: {
-    label,
-    image,
-    url,
-    ingredientLines,
-    totalTime,
     calories,
+    id,
+    image,
+    label,
+    source,
+    totalTime,
+    url,
     yield: serves,
   },
 }) => (
-    <Grid className={styles.recipeCard} item xs={12} sm={6} md={4} lg={3}>
-      <a href={url} target="_blank">
-        <LazyLoad
-          height="100%"
-          offset={300}
-          placeholder={<img src="/plate.jpg" alt="plate" />}
-        >
-          {
-            <img
-              className={styles.mealImage}
-              src={image}
-              alt="delicious meal"
-              title={label}
-            />
-          }
-        </LazyLoad>
-      </a>
-      <div className={styles.info}>
-        <Typography variant="h4" display="block">
-          {utils.toSentenceCase(label)}
-        </Typography>
-        <div className={styles.ingredientsListHeading}>
-          <Typography variant="h6">Ingredients</Typography>
-        </div>
-        <List>
-          {/* We don't want to display duplicate ingredients */}
-          {Array.from(new Set(ingredientLines))
-            .slice(0, 6)
-            .map((ingredient, i) => (
-              <ListItem key={ingredient}>
-                <ListItemText
-                  className={styles.listItem}
-                  primary={
-                    i === 5
-                      ? "..."
-                      : utils.truncateLineWithEllipses(ingredient, 130)
-                  }
+    <Grid item xs={12} sm={6} md={4} lg={3}>
+      <div className={styles.gridItem}>
+        <Link href={`/recipe?id=${id}`}>
+          <a>
+            <LazyLoad
+              height="100%"
+              offset={300}
+              placeholder={<img src="/plate.jpg" alt="plate" />}
+            >
+              {
+                <img
+                  className={styles.cardImage}
+                  src={image}
+                  alt="delicious meal"
+                  title={label}
                 />
-              </ListItem>
-            ))}
-        </List>
-        <div className={styles.extraInfo}>
-          {totalTime > 0 && (
-            <dl className={styles.dl}>
-              <dt className={styles.dt}>Prep and cook time: </dt>
-              <dd className={styles.dd}>{`${totalTime} minutes`}</dd>
-            </dl>
-          )}
-          {calories > 0 && serves > 0 && (
-            <dl className={styles.dl}>
-              <dt className={styles.dt}>Calories per serving: </dt>
-              <dd className={styles.dd}>
-                {Math.round(calories / serves).toLocaleString()}
-              </dd>
-            </dl>
-          )}
-          {serves > 0 && (
-            <dl className={styles.dl}>
-              <dt className={styles.dt}>Serves: </dt>
-              <dd className={styles.dd}>
-                {serves}
-              </dd>
-            </dl>
-          )}
-          <div className={styles.fullRecipeBtn}>
-            <Button variant="contained" href={url} target="_blank">
-              Full recipe
-          </Button>
+              }
+            </LazyLoad>
+          </a>
+        </Link>
+        <div className={styles.cardContent}>
+          <Typography className={styles.label} variant="h5" display="block">
+            {utils.truncateLineWithEllipses(utils.toSentenceCase(label), 40)}
+          </Typography>
+          <dl className={styles.dl}>
+            {totalTime > 0 && (
+              <>
+                <dt className={styles.dt}>Prep and cook time: </dt>
+                <dd className={styles.dd}>{`${totalTime} minutes`}</dd>
+              </>
+            )}
+            {calories > 0 && serves > 0 && (
+              <>
+                <dt className={styles.dt}>Calories per serving: </dt>
+                <dd className={styles.dd}>{Math.round(calories / serves).toLocaleString()}</dd>
+              </>
+            )}
+            {serves > 0 && (
+              <>
+                <dt className={styles.dt}>Serves: </dt>
+                <dd className={styles.dd}>{serves}</dd>
+              </>
+            )}
+          </dl>
+          <div className={styles.buttons}>
+            <div>
+              <Link href={`/recipe?id=${id}`}>
+                <Button component={"a"} color="secondary" variant="contained" href={`/recipe?id=${id}`}>
+                  Recipe
+                </Button>
+              </Link>
+            </div>
+            <div className={styles.externalUrl}>
+              Full recipe at{' '}
+              <ExternalUrl url={url}>
+                {source}
+              </ExternalUrl>
+            </div>
           </div>
         </div>
       </div>

@@ -1,20 +1,21 @@
 import React, { FunctionComponent } from "react";
 import Head from "next/head";
-import RecipeListContainer from "../src/containers/RecipeListContainer";
-import Layout from "../src/components/Layout";
 import { GetServerSideProps } from "next";
+
+import Layout from "../src/components/Layout";
+import RecipesContainer from "../src/containers/RecipesContainer";
+import { RecipeFromApi } from "../src/interfaces/RecipeApi";
 
 const numRecipesPerPage = 8;
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  let { ingredients, page } = query;
-
-  let myIngredients: string = ingredients?.toString() || "chicken";
+export const getServerSideProps: GetServerSideProps = async (
+  { query: { ingredients = 'chicken', page } }
+) => {
   let thisPage: number = typeof page === 'string' && parseInt(page) || 1;
 
   const apiUrl: string =
     "https://api.edamam.com/search" +
-    `?q=${myIngredients}` +
+    `?q=${ingredients.toString()}` +
     `&app_id=${process.env.APPLICATION_ID}` +
     `&app_key=${process.env.APPLICATION_KEY}` +
     `&from=${(thisPage - 1) * numRecipesPerPage}` +
@@ -23,21 +24,21 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const res = await fetch(apiUrl);
   const recipes = await res.json();
 
-  return { props: { recipes, ingredients: myIngredients, page } };
+  return { props: { recipes, ingredients } };
 }
 
 interface Props {
-  readonly recipes: any;
+  readonly recipes: RecipeFromApi;
   readonly ingredients: string;
 }
 
-const byIngredients: FunctionComponent<Props> = ({ recipes, ingredients }) => (
+const RecipesPage: FunctionComponent<Props> = ({ recipes, ingredients }) => (
   <Layout>
     <Head>
       <title>What's For Dinner? | Recipes</title>
       <script src="https://developer.edamam.com/attribution/badge.js"></script>
     </Head>
-    <RecipeListContainer
+    <RecipesContainer
       recipes={recipes}
       ingredients={ingredients}
       numRecipesPerPage={numRecipesPerPage}
@@ -45,4 +46,4 @@ const byIngredients: FunctionComponent<Props> = ({ recipes, ingredients }) => (
   </Layout>
 );
 
-export default byIngredients;
+export default RecipesPage;

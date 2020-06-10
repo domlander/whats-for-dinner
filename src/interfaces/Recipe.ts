@@ -1,4 +1,5 @@
 export type Recipe = {
+  id?: string;
   readonly uri?: string;
   readonly label: string;
   readonly image: string;
@@ -7,4 +8,5 @@ export type Recipe = {
   readonly totalTime: number;
   readonly calories: number;
   readonly yield: number;
+  readonly source?: string
 };

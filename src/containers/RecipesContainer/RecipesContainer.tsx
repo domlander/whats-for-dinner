@@ -1,19 +1,22 @@
-import RecipeListHeader from "../../components/RecipeListHeader";
+import { FunctionComponent } from "react";
+import { useRouter, NextRouter } from "next/router";
+
+import Header from "../../components/Header";
 import RecipeList from "../../components/RecipeList";
 import ApiError from "../../components/ApiError";
 import Pagination from "../../components/Pagination";
-import { useRouter, NextRouter } from "next/router";
+import { RecipeFromApi } from "../../interfaces/RecipeApi";
+import * as utils from "../../utils";
 
-import styles from "./RecipeListContainer.module.scss";
-import { FunctionComponent } from "react";
+import styles from "./RecipesContainer.module.scss";
 
 interface Props {
-  readonly recipes: any;
+  readonly recipes: RecipeFromApi;
   readonly ingredients: string;
   readonly numRecipesPerPage: number;
 }
 
-const RecipeListContainer: FunctionComponent<Props> = ({
+const RecipesContainer: FunctionComponent<Props> = ({
   recipes,
   ingredients,
   numRecipesPerPage,
@@ -44,7 +47,7 @@ const RecipeListContainer: FunctionComponent<Props> = ({
         <ApiError />
       ) : (
           <>
-            <RecipeListHeader ingredients={ingredients} />
+            <Header heading={`Recipes featuring ${utils.formatWordsIntoHumanReadableList(ingredients, ",")}`} />
             <RecipeList recipes={recipes} />
             <div className={styles.pagination}>
               <Pagination count={numPages} handleClick={handlePaginationClick} />
@@ -55,4 +58,4 @@ const RecipeListContainer: FunctionComponent<Props> = ({
   );
 };
 
-export default RecipeListContainer;
+export default RecipesContainer;

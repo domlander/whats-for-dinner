@@ -1,4 +1,4 @@
-const formatWordsIntoHumanReadableList = (words, delimiter) =>
+const formatWordsIntoHumanReadableList = (words: string, delimiter: string) =>
   words
     .toLowerCase()
     .replace(new RegExp(delimiter, "g"), ", ")
