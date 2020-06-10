@@ -2,7 +2,8 @@ import React, { FunctionComponent } from "react";
 import Head from "next/head";
 
 import HomepageContainer from "../src/containers/HomepageContainer";
-import Layout from "../src/components/Layout/Layout";
+import Footer from "../src/components/Footer";
+import Layout from "../src/components/Layout";
 
 const Home: FunctionComponent = () => (
   <Layout>
@@ -19,6 +20,7 @@ const Home: FunctionComponent = () => (
       />
     </Head>
     <HomepageContainer />
+    <Footer />
   </Layout>
 );
 

@@ -7,8 +7,7 @@ $image-height: 300px;
   background-color: #ddd;
   display: flex;
   flex-direction: column;
-  margin-bottom: 50px;
-  margin-top: $image-height / 2;
+  margin: ($image-height / 2) 0 30px;
   max-width: 768px;
   padding: 0 16px;
   width: 98%;
@@ -31,6 +30,15 @@ $image-height: 300px;
   }
 }
 
+.ingredients {
+  width: inherit;
+}
+
 .externalRecipe {
   margin-top: 16px;
+
+  p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }

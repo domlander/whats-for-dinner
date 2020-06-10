@@ -3,6 +3,7 @@ import Head from "next/head";
 import { GetServerSideProps } from "next";
 
 import Layout from "../src/components/Layout";
+import Footer from "../src/components/Footer";
 import RecipesContainer from "../src/containers/RecipesContainer";
 import { RecipeFromApi } from "../src/interfaces/RecipeApi";
 
@@ -43,6 +44,7 @@ const RecipesPage: FunctionComponent<Props> = ({ recipes, ingredients }) => (
       ingredients={ingredients}
       numRecipesPerPage={numRecipesPerPage}
     />
+    <Footer />
   </Layout>
 );
 
