@@ -3,6 +3,7 @@ import Head from "next/head";
 import { GetServerSideProps } from "next";
 
 import RecipeContainer from "../src/containers/RecipeContainer";
+import Footer from "../src/components/Footer";
 import Layout from "../src/components/Layout";
 import { Recipe } from "../src/interfaces/Recipe";
 
@@ -41,6 +42,7 @@ const RecipePage: FunctionComponent<Props> = ({ recipe }) => (
           <p>No recipe found!</p>
         )
     }
+    <Footer />
   </Layout>
 );
 

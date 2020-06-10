@@ -1,0 +1,28 @@
+.footer {
+  width: 100%;
+  background-color: #d5d5d5;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px 20px;
+}
+
+.github {
+  display: flex;
+
+  p {
+    font-size: 12px;
+    margin-left: 6px;
+  }
+}
+
+.a {
+  color: #000;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

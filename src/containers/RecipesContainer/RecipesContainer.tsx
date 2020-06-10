@@ -46,13 +46,13 @@ const RecipesContainer: FunctionComponent<Props> = ({
       {!recipes?.hits || recipes.status === "error" ? (
         <ApiError />
       ) : (
-          <>
+          <div className={styles.recipesContainer}>
             <Header heading={`Recipes featuring ${utils.formatWordsIntoHumanReadableList(ingredients, ",")}`} />
             <RecipeList recipes={recipes} />
             <div className={styles.pagination}>
               <Pagination count={numPages} handleClick={handlePaginationClick} />
             </div>
-          </>
+          </div>
         )}
     </>
   );
