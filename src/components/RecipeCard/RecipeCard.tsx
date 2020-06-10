@@ -1,11 +1,11 @@
 import Link from "next/link";
+import { FunctionComponent } from "react";
 import LazyLoad from "react-lazyload";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
 import * as utils from "../../utils";
-import { FunctionComponent } from "react";
 import { Recipe } from "../../interfaces/Recipe";
 import styles from "./RecipeCard.module.scss";
 import ExternalUrl from "../ExternalUrl";
@@ -24,7 +24,7 @@ const RecipeCard: FunctionComponent<Props> = ({
     totalTime,
     url,
     yield: serves,
-  },
+  }
 }) => (
     <Grid item xs={12} sm={6} md={4} lg={3}>
       <div className={styles.gridItem}>
@@ -73,7 +73,12 @@ const RecipeCard: FunctionComponent<Props> = ({
           <div className={styles.buttons}>
             <div>
               <Link href={`/recipe?id=${id}`}>
-                <Button component={"a"} color="secondary" variant="contained" href={`/recipe?id=${id}`}>
+                <Button
+                  component={"a"}
+                  color="secondary"
+                  variant="contained"
+                  href={`/recipe?id=${id}`}
+                >
                   Recipe
                 </Button>
               </Link>

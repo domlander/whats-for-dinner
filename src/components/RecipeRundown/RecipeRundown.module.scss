@@ -1,6 +1,6 @@
 @import "../../styles/variables";
 
-$image-height: 200px;
+$image-height: 300px;
 
 .rundown {
   align-items: center;
@@ -24,6 +24,7 @@ $image-height: 200px;
 .gridContainer {
   display: grid;
   grid-template-columns: 1fr;
+  gap: 10px 20px;
   margin: 10px;
   @media (min-width: #{$sm}) {
     grid-template-columns: 1fr 1fr;
