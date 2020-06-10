@@ -31,7 +31,7 @@ const RecipeRundown: FunctionComponent<Props> = ({
         <div>
           <p>
             Source:{' '}
-            <ExternalUrl url={url}>
+            <ExternalUrl url={url} showIcon>
               {source}
             </ExternalUrl>
           </p>
@@ -74,7 +74,7 @@ const RecipeRundown: FunctionComponent<Props> = ({
           </Typography>
           <p>
             See the full recipe on the {source} website:{' '}
-            <ExternalUrl url={url}>
+            <ExternalUrl url={url} showIcon>
               {url}
             </ExternalUrl>
           </p>

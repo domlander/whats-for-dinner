@@ -85,7 +85,7 @@ const RecipeCard: FunctionComponent<Props> = ({
             </div>
             <div className={styles.externalUrl}>
               Full recipe at{' '}
-              <ExternalUrl url={url}>
+              <ExternalUrl url={url} showIcon>
                 {source}
               </ExternalUrl>
             </div>
