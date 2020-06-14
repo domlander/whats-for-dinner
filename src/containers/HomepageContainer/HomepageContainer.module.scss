@@ -1,7 +1,10 @@
+@import "../../styles/variables";
+
 $approximate-icon-width: 60px;
 
 .homepageContainer {
   margin-bottom: 30px;
+  max-width: $lg;
 }
 
 .topRow {

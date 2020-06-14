@@ -1,6 +1,6 @@
 ## What's for dinner?
 
-What's for dinner? is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/zeit/next.js/tree/canary/packages/create-next-app) using [SASS](https://sass-lang.com/), [CSS Modules](https://github.com/css-modules/css-modules) and [Material-UI](https://material-ui.com/), which allows you to search for recipes given a list of ingredients. Gets data from a free-to-use public API.
+What's for dinner? is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/zeit/next.js/tree/canary/packages/create-next-app) using [SASS](https://sass-lang.com/), [CSS Modules](https://github.com/css-modules/css-modules) and [Material-UI](https://material-ui.com/), which allows you to search for recipes given a list of ingredients. Gets data from a free-to-use [public API](https://developer.edamam.com/edamam-recipe-api).
 
 For example, If you've bought a whole chicken and you want to use up the garlic and the mushrooms you have in your cupboard, this website will help you find recipes that feature all these ingredients.
 

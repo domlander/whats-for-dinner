@@ -2,9 +2,9 @@ import React, { FunctionComponent } from "react";
 import Head from "next/head";
 import { GetServerSideProps } from "next";
 
-import RecipeContainer from "../src/containers/RecipeContainer";
 import Footer from "../src/components/Footer";
 import Layout from "../src/components/Layout";
+import RecipeContainer from "../src/containers/RecipeContainer";
 import { Recipe } from "../src/interfaces/Recipe";
 
 export const getServerSideProps: GetServerSideProps = async ({ query: { id } }) => {
@@ -25,7 +25,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query: { id } }) 
 }
 
 interface Props {
-  readonly recipe: Recipe;
+  readonly recipe?: Recipe;
 }
 
 const RecipePage: FunctionComponent<Props> = ({ recipe }) => (
@@ -33,15 +33,9 @@ const RecipePage: FunctionComponent<Props> = ({ recipe }) => (
     <Head>
       <title>{`What's For Dinner?${recipe ? (` | ${recipe.label}`) : ''}`}</title>
     </Head>
-    {
-      recipe ? (
-        <RecipeContainer
-          recipe={recipe}
-        />
-      ) : (
-          <p>No recipe found!</p>
-        )
-    }
+    <RecipeContainer
+      recipe={recipe}
+    />
     <Footer />
   </Layout>
 );

@@ -7,7 +7,7 @@ import Footer from "../src/components/Footer";
 import RecipesContainer from "../src/containers/RecipesContainer";
 import { RecipeFromApi } from "../src/interfaces/RecipeApi";
 
-const numRecipesPerPage = 8;
+const numRecipesPerPage = 12;
 
 export const getServerSideProps: GetServerSideProps = async (
   { query: { ingredients = 'chicken', page } }

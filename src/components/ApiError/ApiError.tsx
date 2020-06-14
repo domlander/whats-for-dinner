@@ -1,7 +1,8 @@
 import { Button } from "@material-ui/core";
+import styles from "./ApiError.module.scss";
 
 const ApiError = () => (
-  <div>
+  <div className={styles.apiError}>
     <p>
       We are unable to show you recipes at the moment. Try again in a few
       minutes.
