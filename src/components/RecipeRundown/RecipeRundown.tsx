@@ -30,7 +30,7 @@ const RecipeRundown: FunctionComponent<Props> = ({
       <div className={styles.gridContainer}>
         <div>
           <p>
-            Source:{' '}
+            Full recipe:{' '}
             <ExternalUrl url={url} showIcon>
               {source}
             </ExternalUrl>
