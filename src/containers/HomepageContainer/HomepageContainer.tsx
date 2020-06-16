@@ -3,7 +3,6 @@ import Link from "next/link";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
-import Header from "../../components/Header";
 import IngredientsChecklist from "../../components/IngredientsChecklist";
 import availableIngredients from "../../interfaces/AvailableIngredients";
 
@@ -22,8 +21,10 @@ const HomepageContainer = () => {
 
   return (
     <div className={styles.homepageContainer}>
-      <Header heading='Ingredients' />
-      <Typography variant="subtitle1">Select ingredients to find a yummy recipe</Typography>
+      <Typography className={styles.pageHeading} variant="h3">
+        Ingredients
+      </Typography>
+      <Typography className={styles.subHeading} variant="subtitle1">Select ingredients to find a yummy recipe</Typography>
       <div className={styles.checklist}>
         <IngredientsChecklist
           ingredients={availableIngredients}

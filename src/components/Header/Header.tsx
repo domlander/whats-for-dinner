@@ -5,22 +5,16 @@ import RestaurantMenuIcon from "@material-ui/icons/RestaurantMenu";
 
 import styles from "./Header.module.scss";
 
-interface Props {
-  readonly heading: string;
-}
-
-const Header: FunctionComponent<Props> = ({ heading }) => (
-  <div className={styles.topRow}>
+const Header: FunctionComponent = () => (
+  <div className={styles.header}>
     <Link href="/">
       <a>
         <RestaurantMenuIcon style={{ fontSize: 60 }} color="secondary" />
       </a>
     </Link>
-    <span className={styles.headingContainer}>
-      <Typography className={styles.heading} variant="h3">
-        {heading}
-      </Typography>
-    </span>
+    <Typography className={styles.heading} color="secondary" variant="h5">
+      What's For Dinner?
+    </Typography>
   </div>
 );
 

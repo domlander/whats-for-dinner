@@ -3,7 +3,6 @@ import Head from "next/head";
 import { GetServerSideProps } from "next";
 
 import Layout from "../src/components/Layout";
-import Footer from "../src/components/Footer";
 import RecipesContainer from "../src/containers/RecipesContainer";
 import { RecipeFromApi } from "../src/interfaces/RecipeApi";
 
@@ -34,18 +33,19 @@ interface Props {
 }
 
 const RecipesPage: FunctionComponent<Props> = ({ recipes, ingredients }) => (
-  <Layout>
+  <>
     <Head>
       <title>What's For Dinner? | Recipes</title>
       <script src="https://developer.edamam.com/attribution/badge.js"></script>
     </Head>
-    <RecipesContainer
-      recipes={recipes}
-      ingredients={ingredients}
-      numRecipesPerPage={numRecipesPerPage}
-    />
-    <Footer />
-  </Layout>
+    <Layout>
+      <RecipesContainer
+        recipes={recipes}
+        ingredients={ingredients}
+        numRecipesPerPage={numRecipesPerPage}
+      />
+    </Layout>
+  </>
 );
 
 export default RecipesPage;

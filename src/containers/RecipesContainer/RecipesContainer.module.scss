@@ -1,5 +1,21 @@
-.recipesContainer {
-  padding: 0 16px;
+@import "../../styles/variables";
+
+.pageHeading {
+  padding: 1rem 0.5rem;
+  font-size: 2rem !important;
+  @media (min-width: #{$sm}) {
+    font-size: 2.25rem !important;
+  }
+  @media (min-width: #{$md}) {
+    font-size: 2.375rem !important;
+  }
+  @media (min-width: #{$lg}) {
+    font-size: 2.75rem !important;
+  }
+}
+
+.recipesGrid {
+  margin-top: 0.5rem;
 }
 
 .pagination {
