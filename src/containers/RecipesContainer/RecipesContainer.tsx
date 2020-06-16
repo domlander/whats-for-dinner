@@ -1,10 +1,11 @@
 import { FunctionComponent } from "react";
 import { useRouter, NextRouter } from "next/router";
+import { Typography } from "@material-ui/core";
 
-import Header from "../../components/Header";
-import RecipeList from "../../components/RecipeList";
 import ApiError from "../../components/ApiError";
+import Breadcrumbs from "../../components/Breadcrumbs";
 import Pagination from "../../components/Pagination";
+import RecipeList from "../../components/RecipeList";
 import { RecipeFromApi } from "../../interfaces/RecipeApi";
 import * as utils from "../../utils";
 
@@ -47,8 +48,18 @@ const RecipesContainer: FunctionComponent<Props> = ({
         <ApiError />
       ) : (
           <div className={styles.recipesContainer}>
-            <Header heading={`Recipes featuring ${utils.formatWordsIntoHumanReadableList(ingredients, ",")}`} />
-            <RecipeList recipes={recipes} />
+            <Breadcrumbs
+              crumbs={[
+                { text: "Home", url: "/" },
+                { text: "Recipes" }
+              ]}
+            />
+            <Typography className={styles.pageHeading} variant="h4">
+              {`Recipes featuring ${utils.formatWordsIntoReadableList(ingredients, ",")}`}
+            </Typography>
+            <div className={styles.recipesGrid}>
+              <RecipeList recipes={recipes} />
+            </div>
             <div className={styles.pagination}>
               <Pagination count={numPages} handleClick={handlePaginationClick} />
             </div>

@@ -1,4 +1,7 @@
 import { FunctionComponent, ReactNode } from "react";
+import Footer from "../Footer";
+import Header from "../Header";
+
 import styles from "./Layout.module.scss";
 
 interface Props {
@@ -6,7 +9,13 @@ interface Props {
 }
 
 const Layout: FunctionComponent<Props> = ({ children }) => (
-  <div className={styles.container}>{children}</div>
+  <div className={styles.container}>
+    <Header />
+    <div className={styles.content}>
+      {children}
+    </div>
+    <Footer />
+  </div>
 );
 
 export default Layout;

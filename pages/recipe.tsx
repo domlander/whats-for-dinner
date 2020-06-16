@@ -2,13 +2,13 @@ import React, { FunctionComponent } from "react";
 import Head from "next/head";
 import { GetServerSideProps } from "next";
 
-import Footer from "../src/components/Footer";
 import Layout from "../src/components/Layout";
 import RecipeContainer from "../src/containers/RecipeContainer";
 import { Recipe } from "../src/interfaces/Recipe";
 
 export const getServerSideProps: GetServerSideProps = async ({ query: { id } }) => {
   let recipe = null;
+
   if (typeof id !== 'undefined') {
     const url: string =
       "https://api.edamam.com/search" +
@@ -29,15 +29,16 @@ interface Props {
 }
 
 const RecipePage: FunctionComponent<Props> = ({ recipe }) => (
-  <Layout>
+  <>
     <Head>
       <title>{`What's For Dinner?${recipe ? (` | ${recipe.label}`) : ''}`}</title>
     </Head>
-    <RecipeContainer
-      recipe={recipe}
-    />
-    <Footer />
-  </Layout>
+    <Layout>
+      <RecipeContainer
+        recipe={recipe}
+      />
+    </Layout>
+  </>
 );
 
 export default RecipePage;
