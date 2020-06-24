@@ -1,7 +1,6 @@
 import { FunctionComponent, useState, useEffect } from "react";
 import { Typography } from "@material-ui/core";
 
-import ApiError from "../../components/ApiError";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import RecipeRundown from "../../components/RecipeRundown";
 import { Recipe } from "../../interfaces/Recipe";
@@ -10,7 +9,7 @@ import * as utils from "../../utils";
 import styles from './RecipeContainer.module.scss';
 
 interface Props {
-  readonly recipe?: Recipe;
+  readonly recipe: Recipe;
 }
 
 const RecipeContainer: FunctionComponent<Props> = ({ recipe }) => {
@@ -24,10 +23,6 @@ const RecipeContainer: FunctionComponent<Props> = ({ recipe }) => {
       setRecipesUrl(url);
     }
   }, []);
-
-  if (!recipe) {
-    return <ApiError />
-  }
 
   const crumbs = recipesUrl
     ? [{ text: "Home", url: "/" }, { text: "Recipes", url: recipesUrl }, { text: recipe.label }]

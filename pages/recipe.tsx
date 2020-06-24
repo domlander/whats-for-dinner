@@ -5,6 +5,7 @@ import { GetServerSideProps } from "next";
 import Layout from "../src/components/Layout";
 import RecipeContainer from "../src/containers/RecipeContainer";
 import { Recipe } from "../src/interfaces/Recipe";
+import ApiError from "../src/components/ApiError";
 
 export const getServerSideProps: GetServerSideProps = async ({ query: { id } }) => {
   let recipe = null;
@@ -28,17 +29,23 @@ interface Props {
   readonly recipe?: Recipe;
 }
 
-const RecipePage: FunctionComponent<Props> = ({ recipe }) => (
-  <>
-    <Head>
-      <title>{`What's For Dinner?${recipe ? (` | ${recipe.label}`) : ''}`}</title>
-    </Head>
-    <Layout>
-      <RecipeContainer
-        recipe={recipe}
-      />
-    </Layout>
-  </>
-);
+const RecipePage: FunctionComponent<Props> = ({ recipe }) => {
+  if (!recipe) {
+    return <ApiError />
+  }
+
+  return (
+    <>
+      <Head>
+        <title>{`What's For Dinner?${recipe ? (` | ${recipe.label}`) : ''}`}</title>
+      </Head>
+      <Layout>
+        <RecipeContainer
+          recipe={recipe}
+        />
+      </Layout>
+    </>
+  )
+};
 
 export default RecipePage;
