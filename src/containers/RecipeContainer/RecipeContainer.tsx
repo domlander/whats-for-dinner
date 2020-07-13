@@ -28,7 +28,7 @@ const RecipeContainer: FunctionComponent<Props> = ({ recipe }) => {
     ? [{ text: "Home", url: "/" }, { text: "Recipes", url: recipesUrl }, { text: recipe.label }]
     : [{ text: "Home", url: "/" }, { text: recipe.label }];
 
-  return (
+  return !recipe ? null : (
     <div className={styles.recipeContainer}>
       <div className={styles.breadcrumbs}>
         <Breadcrumbs crumbs={crumbs} />
